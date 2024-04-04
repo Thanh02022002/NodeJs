@@ -15,7 +15,7 @@ let createNewUser = async (data) => {
                 lastName: data.lastName,
                 address: data.address,
                 phonenumber: data.phonenumber,
-                gender: data.gender === '1' ? true:false,
+                gender: data.gender === '1' ? true : false,
                 roleId: data.roleId,
             })
 
@@ -40,6 +40,21 @@ let hashUserPassword = (password) => {
     })
 }
 
-module.exports ={
-    createNewUser: createNewUser
+let getAllUser = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let users = db.User.findAll({
+                raw: true,
+            });
+            resolve(users)
+
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
+
+module.exports = {
+    createNewUser: createNewUser,
+    getAllUser: getAllUser
 }
