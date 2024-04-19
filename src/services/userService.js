@@ -12,9 +12,9 @@ let handleUserLogin = (email, password) => {
 
                 let user = await db.User.findOne({
                     attributes: ['email', 'roleId', 'password'],
-                    where: {email: email },
+                    where: { email: email },
                     raw: true
-                    
+
                 });
                 if (user) {
                     //compare password
