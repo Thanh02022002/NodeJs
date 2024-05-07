@@ -141,12 +141,12 @@ let createNewUser = (data) => {
 let deleteUser = (userId) => {
     return new Promise(async(resolve, reject) => {
         let foundUser = await db.User.findOne({
-            where: {id: userId}
+            where: { id: userId }
         })
         if (!foundUser){
             resolve({
                 errCode: 2,
-                errMessage: `The user is'nt exist`
+                errMessage: `The user isn't exist`
             })
         }
 
@@ -200,6 +200,7 @@ let updateUserData = (data) => {
 
 module.exports = {
     handleUserLogin: handleUserLogin,
+    checkUserEmail: checkUserEmail,
     getAllUsers: getAllUsers,
     createNewUser: createNewUser,
     deleteUser: deleteUser,
